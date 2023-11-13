@@ -3,7 +3,7 @@ node_modules/
 
 # environment
 .env*
-
+!.env.example
 
 # Expo
 .expo/
