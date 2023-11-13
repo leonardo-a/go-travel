@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Roles {
+  ADMIN
+  USER
+}
+
+model User {
+  id            String  @id @default(uuid())
+  name          String
+  username      String  @unique()
+  email         String  @unique()
+  password_hash String
+  role          Roles   @default(USER)
+  status        String?
+
+  Member Member[]
+
+  User        Friend[]      @relation("user")
+  Friend      Friend[]      @relation("friend")
+  Preferences Preferences[]
+  List        List[]
+
+  @@map("users")
+}
+
+model List {
+  id          String   @id @default(uuid())
+  owner_id    String
+  name        String
+  cover_photo String?
+  created_at  DateTime @default(now())
+
+  owner User @relation(fields: [owner_id], references: [id])
+
+  Member Member[]
+  Travel Travel[]
+
+  @@map("lists")
+}
+
+model Transportation {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  Travel      Travel[]
+
+  @@map("transportations")
+}
+
+model Travel {
+  id                String    @id @default(uuid())
+  list_id           String
+  transportation_id Int?
+  cover_photo       String?
+  destination       String
+  country           String
+  start_date        DateTime
+  duration          Int       @default(1)
+  costs             Int?
+  completed_at      DateTime?
+  updated_at        DateTime  @updatedAt
+
+  transportation Transportation? @relation(fields: [transportation_id], references: [id])
+  list           List            @relation(fields: [list_id], references: [id])
+
+  @@map("travels")
+}
+
+model Member {
+  id          String    @id @default(uuid())
+  user_id     String
+  list_id     String
+  accepted_at DateTime?
+
+  user User @relation(fields: [user_id], references: [id])
+  list List @relation(fields: [list_id], references: [id])
+
+  @@map("members")
+}
+
+model Friend {
+  id           String    @id @default(uuid())
+  user_id      String
+  friend_id    String
+  requested_at DateTime  @default(now())
+  accepted_at  DateTime?
+
+  user   User @relation(name: "user", fields: [user_id], references: [id])
+  friend User @relation(name: "friend", fields: [friend_id], references: [id])
+
+  @@unique([user_id, friend_id])
+  @@map("friends")
+}
+
+model Preferences {
+  id                      String   @id @default(uuid())
+  user_id                 String
+  notify_friend_request   Boolean  @default(true)
+  notify_list_invitation  Boolean  @default(true)
+  notify_near_travel      Boolean  @default(true)
+  receive_friend_request  Boolean  @default(true)
+  receive_list_invitation Boolean  @default(true)
+  updated_at              DateTime @updatedAt
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("preferences")
+}
