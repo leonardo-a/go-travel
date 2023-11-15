@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { View, Text, Pressable, Alert } from 'react-native'
+import { View, Text, Pressable, Alert, Image } from 'react-native'
 import { router } from 'expo-router'
 import { TextInput } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Image as ImageIcon } from 'lucide-react-native'
+import * as ImagePicker from 'expo-image-picker'
 
 import { api } from '@libs/axios'
 
@@ -16,8 +17,55 @@ export default function NewList() {
   const [name, setName] = useState<string>()
   const [members, setMembers] = useState<string[]>([])
   const [showMembersModal, setShowMembersModal] = useState<boolean>(false)
+  const [cover, setCover] = useState<string | null>(null)
+
+  async function openImagePicker() {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+      })
+
+      if (result.assets && result.assets[0]) {
+        setCover(result.assets[0].uri)
+      }
+    } catch (err) {}
+  }
+
+  async function uploadCover() {
+    try {
+      const uploadFormData = new FormData()
+
+      uploadFormData.append('file', {
+        uri: cover,
+        name: 'list_image.jpg',
+        type: 'image/jpeg',
+      } as any)
+
+      const { data } = await api.post('/lists/upload', uploadFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+
+      return data.fileUrl as string
+    } catch (err) {
+      console.log({ err })
+      return null
+    }
+  }
 
   async function handleSubmit() {
+    let coverUrl: string | null = null
+
+    if (cover) {
+      coverUrl = await uploadCover()
+
+      if (!coverUrl) {
+        return
+      }
+    }
+
     try {
       const token = await getSecureItem('session')
 
@@ -26,6 +74,7 @@ export default function NewList() {
         {
           name,
           members,
+          cover: coverUrl,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       )
@@ -52,12 +101,26 @@ export default function NewList() {
             {/* Form */}
             <View className="w-full px-2 py-1 space-y-6">
               {/* FormInput */}
+              {/* FormInput */}
               <FormField title="Foto de Capa">
-                <Pressable className="items-center justify-center w-4/5 h-40 bg-purple-400 rounded-xl">
-                  <ImageIcon size={32} className="text-purple-500" />
-                  <Text className="text-sm text-purple-500">
-                    Clique para escolher uma foto
-                  </Text>
+                <Pressable
+                  className="items-center justify-center w-4/5 h-40 bg-purple-400 rounded-xl"
+                  onPress={openImagePicker}
+                >
+                  {cover ? (
+                    <Image
+                      alt="list-preview"
+                      source={{ uri: cover }}
+                      className="object-cover w-full h-full rounded-xl"
+                    />
+                  ) : (
+                    <>
+                      <ImageIcon size={32} className="text-purple-500" />
+                      <Text className="text-sm text-purple-500">
+                        Clique para escolher uma foto
+                      </Text>
+                    </>
+                  )}
                 </Pressable>
               </FormField>
 

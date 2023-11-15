@@ -11,7 +11,6 @@ import {
 } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
 import * as ImagePicker from 'expo-image-picker'
-import dayjs from 'dayjs'
 import { ImageIcon } from 'lucide-react-native'
 
 import { api } from '@libs/axios'
@@ -23,7 +22,6 @@ import { AndroidDatePicker } from '@components/ui/AndroidDatePicker'
 import { Header } from '@components/partials/Header'
 import { FormField } from '@components/ui/FormField'
 import { Loading } from '@components/ui/Loading'
-import { AxiosError } from 'axios'
 
 export default function NewTravel() {
   const { listId } = useLocalSearchParams()

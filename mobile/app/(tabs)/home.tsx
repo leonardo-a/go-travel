@@ -110,6 +110,7 @@ export default function Home() {
                         id={`${item.id}`}
                         name={item.name}
                         members={item.members}
+                        cover={item.coverUrl}
                       />
                     )
                   }}

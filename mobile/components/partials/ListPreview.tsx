@@ -1,22 +1,35 @@
+import { Pressable, View, Text, Image } from 'react-native'
 import { Link } from 'expo-router'
-import { Pressable, View, Text } from 'react-native'
-import { MembersPreview } from './MembersPreview'
+
 import { cn } from '@utils/merge'
+
+import { MembersPreview } from './MembersPreview'
 
 interface ListPreviewProps {
   id: string
   name: string
   members: string[]
+  cover: string | null
 }
 
-export function ListPreview({ id, name, members }: ListPreviewProps) {
+export function ListPreview({ id, name, members, cover }: ListPreviewProps) {
   return (
     <Link href={`/lists/${id}`} asChild>
       <Pressable className="flex-row items-center px-3 space-x-2 rounded-lg w-60 h-28 bg-dark-700">
-        <View className="items-center justify-center w-20 h-20 bg-purple-300 rounded-lg">
-          <Text className="text-xl font-bold text-purple-700 uppercase">
-            {name.charAt(0)}
-          </Text>
+        <View className="w-20 h-20">
+          {cover ? (
+            <Image
+              alt={`travel-cover-${id}`}
+              source={{ uri: cover }}
+              className="w-full h-full rounded-lg"
+            />
+          ) : (
+            <View className="items-center justify-center w-full h-full bg-purple-300 rounded-lg">
+              <Text className="text-xl font-bold text-purple-700 uppercase">
+                {name.charAt(0)}
+              </Text>
+            </View>
+          )}
         </View>
         <View
           className={cn([
