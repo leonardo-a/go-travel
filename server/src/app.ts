@@ -23,7 +23,6 @@ import { listsRoutes } from './http/controllers/lists/routes'
 import { membersRoutes } from './http/controllers/members/routes'
 import { travelsRoutes } from './http/controllers/travels/routes'
 import { usersRoutes } from './http/controllers/users/routes'
-// import { imagesRoutes } from './http/controllers/images/routes'
 
 export const app = fastify()
 
@@ -46,7 +45,6 @@ app.register(listsRoutes)
 app.register(membersRoutes)
 app.register(travelsRoutes)
 app.register(friendsRoutes)
-// app.register(imagesRoutes)
 
 app.setErrorHandler((error, _request, reply) => {
   if (error instanceof ZodError) {
