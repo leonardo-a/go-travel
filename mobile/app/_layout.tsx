@@ -2,7 +2,6 @@ import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { useEffect } from 'react'
 import { AuthProvider } from '../contexts/auth'
-import * as Sentry from 'sentry-expo'
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -11,12 +10,6 @@ export {
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
-
-Sentry.init({
-  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
-  enableInExpoDevelopment: true,
-  debug: __DEV__,
-})
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({

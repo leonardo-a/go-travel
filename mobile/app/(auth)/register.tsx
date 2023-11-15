@@ -4,7 +4,6 @@ import { Link } from 'expo-router'
 import { ArrowLeft } from 'lucide-react-native'
 
 import { useAuth } from '@contexts/auth'
-import { captureException } from '@services/sentry'
 import { api } from '@libs/axios'
 import { validateEmail } from '@utils/validate-fields'
 import { ScreenStatus } from '@interfaces/app'
@@ -83,7 +82,6 @@ export default function Register() {
       ) {
         return
       }
-      captureException(err)
       setStatus('error')
       console.log({ errRegister: err })
     }

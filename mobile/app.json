@@ -42,8 +42,7 @@
         {
           "username": "leonardoa.dev"
         }
-      ],
-      "sentry-expo"
+      ]
     ],
     "experiments": {
       "typedRoutes": true
@@ -55,17 +54,6 @@
       "eas": {
         "projectId": "4eff88a8-f610-4982-a278-aceb55a00b49"
       }
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "leonardo-dev",
-            "project": "go-travel-app"
-          }
-        }
-      ]
     },
     "runtimeVersion": {
       "policy": "appVersion"

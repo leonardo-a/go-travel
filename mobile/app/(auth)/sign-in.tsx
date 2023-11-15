@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react'
 import { View, Text, Pressable, Alert, ActivityIndicator } from 'react-native'
 import { Link } from 'expo-router'
 import colors from 'tailwindcss/colors'
-import { AntDesign } from '@expo/vector-icons'
 import AppLogo from '../../assets/vectors/logo.svg'
 
 import { useAuth } from '@contexts/auth'
-import { captureException } from '@services/sentry'
 import { getSecureItem } from '@services/secure-storage'
 import { validateEmail } from '@utils/validate-fields'
 
@@ -36,7 +34,6 @@ export default function SignIn() {
       }
       setStatus('done')
     } catch (err) {
-      captureException(err)
       console.log({ errSession: err })
       setStatus('error')
     }
@@ -86,7 +83,6 @@ export default function SignIn() {
       if (err instanceof AxiosError) {
         console.log({ err })
       }
-      captureException(err)
       setStatus('error')
     }
   }
@@ -156,17 +152,6 @@ export default function SignIn() {
             </Link>
           </View>
         </View>
-
-        {/* <View className="flex-row items-center px-5 space-x-2">
-          <View className="w-20 border-b-2 border-dark-500" />
-          <Text className="text-dark-500">ou</Text>
-          <View className="w-20 border-b-2 border-dark-500" />
-        </View>
-        <Pressable className="flex-row items-center justify-center w-10/12 px-4 py-2 space-x-2 rounded-lg bg-dark-200">
-          <AntDesign name="google" size={24} color={colors.blue[500]} />
-          <Text className="font-bold text-dark-700">Entrar com o Google</Text>
-        </Pressable> 
-        */}
       </View>
       {status === 'pending' && (
         <View className="absolute z-20 items-center justify-center w-full h-full bg-dark-800/50">
