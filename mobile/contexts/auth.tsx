@@ -1,6 +1,11 @@
 import { useSegments, useRouter } from 'expo-router'
 import { createContext, useContext, useEffect, useState } from 'react'
-import { deleteSecureItem, saveSecureItem } from '../services/secure-storage'
+import {
+  deleteSecureItem,
+  getSecureItem,
+  saveSecureItem,
+} from '../services/secure-storage'
+import { SplashLoading } from '@components/partials/SplashLoading'
 
 export type AuthType = {
   signIn: (session: string) => void
@@ -21,7 +26,7 @@ export function useAuth() {
   return value as AuthType
 }
 
-function useProtectedRoute(session: string | null) {
+async function useProtectedRoute(session: string | null) {
   const segments = useSegments()
   const router = useRouter()
 

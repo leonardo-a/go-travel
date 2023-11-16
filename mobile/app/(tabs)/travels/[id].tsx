@@ -123,7 +123,9 @@ export default function TravelDetails() {
                 <View className="flex-row space-x-6">
                   {details.costs && (
                     <View className="px-5 py-2 space-y-2 rounded-lg bg-marigold-400">
-                      <Text className="font-bold text-dark-800">Passagem</Text>
+                      <Text className="font-bold text-dark-800">
+                        Custos da Viagem
+                      </Text>
                       <View>
                         <Text className="text-sm text-dark-700">
                           a partir de

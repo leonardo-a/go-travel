@@ -14,11 +14,13 @@ import { api } from '@libs/axios'
 import { AxiosError } from 'axios'
 import { ScreenStatus } from '@interfaces/app'
 import { cn } from '@utils/merge'
+import { SplashLoading } from '@components/partials/SplashLoading'
 
 export default function SignIn() {
   const auth = useAuth()
 
   const [status, setStatus] = useState<ScreenStatus>('pending')
+  const [isSessionLoading, setIsSessionLoading] = useState<boolean>(true)
   const [email, setEmail] = useState<string>()
   const [isEmailValid, setIsEmailValid] = useState<boolean | null>(null)
   const [password, setPassword] = useState<string>()
@@ -26,6 +28,7 @@ export default function SignIn() {
 
   async function getSession() {
     setStatus('pending')
+    setIsSessionLoading(true)
     try {
       const session = await getSecureItem('session')
 
@@ -33,6 +36,7 @@ export default function SignIn() {
         auth.signIn(session)
       }
       setStatus('done')
+      setIsSessionLoading(false)
     } catch (err) {
       console.log({ errSession: err })
       setStatus('error')
@@ -85,6 +89,10 @@ export default function SignIn() {
       }
       setStatus('error')
     }
+  }
+
+  if (isSessionLoading) {
+    return <SplashLoading />
   }
 
   return (
@@ -153,11 +161,6 @@ export default function SignIn() {
           </View>
         </View>
       </View>
-      {status === 'pending' && (
-        <View className="absolute z-20 items-center justify-center w-full h-full bg-dark-800/50">
-          <ActivityIndicator color={colors.purple[600]} size={42} />
-        </View>
-      )}
     </Background>
   )
 }

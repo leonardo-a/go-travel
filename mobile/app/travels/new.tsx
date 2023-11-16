@@ -173,8 +173,6 @@ export default function NewTravel() {
     getList()
   }, [listId])
 
-  // console.log({ listId })
-
   if (!list || status === 'pending') {
     return <Loading />
   }
