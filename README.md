@@ -12,6 +12,17 @@ O GO Travel é um aplicativo para aqueles que gostam de conhecer novos lugares e
   
 - **Adicione Amigos:** Transforme suas viagens em experiências compartilhadas! Adicione amigos à sua lista e planeje juntos os momentos incríveis que estão por vir.
 
+## Variáveis de Ambiente
+
+Antes de seguir para a instalação do aplicativo, é preciso criar um arquivo ***.env*** em cada pasta (mobile e server) e adicionar as seguintes váriaveis de ambiente:
+
+1. **Na pasta 'server'**
+- `DATABASE_URL`: URL para conectar o prisma com o db 
+- `JWT_SECRET`: Um valor para codificação do JWT
+
+2. **Na pasta 'mobile'**
+- `EXPO_PUBLIC_API_URL`: URL onde está a API. Caso estiver rodando localmente, utilizar o IP da máquina ao invés de 'localhost'
+
 ## Como Começar
 
 Para começar a testar o GO Travel, é preciso seguir os seguintes passos para a instalação:
