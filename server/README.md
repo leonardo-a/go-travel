@@ -14,7 +14,7 @@ GoTravel API
 - [x] Deve ser possível o usuário aceitar/recusar um convite de amizade;
 - [x] Deve ser possível o usuário adicionar um membro em uma de suas listas;
 - [ ] Deve ser possível o usuário concluir uma viagem;
-- [ ] Deve ser possível o usuário buscar um amigo pelo nome;
+- [x] Deve ser possível o usuário buscar um amigo pelo nome;
 - [ ] Deve ser possível o usuário editar seus dados;
 - [ ] Deve ser possível o usuário editar suas preferências do app;
 - [x] Deve ser possível o usuário ver suas viagens mais próximas;
