@@ -74,7 +74,7 @@ export default function NewList() {
         {
           name,
           members,
-          cover: coverUrl,
+          cover: coverUrl || undefined,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       )
