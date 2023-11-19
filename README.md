@@ -1,10 +1,10 @@
 # GO Travel 🌍✈️
 
-<center>
+<p align="center">
 
-   ![logo](docs/assets/logo.png?width=100&height=200)
+  <img src="docs/assets/logo.png" alt="App Logo">
 
-</center>
+</p>
 
 Crie listas com suas próximas viagens e convide seus amigos para compartilhar esses momentos! 🚀
 
@@ -19,11 +19,13 @@ O GO Travel é um aplicativo para aqueles que gostam de conhecer novos lugares e
 - **Adicione Amigos:** Transforme suas viagens em experiências compartilhadas! Adicione amigos à sua lista e planeje juntos os momentos incríveis que estão por vir.
 
 ## Capturas de Tela
-
-<img src="docs/screenshots/login.png" width="100" height="200" alt="Login Page">
-<img src="docs/screenshots/home.png" width="100" height="200" alt="Home Page">
-<img src="docs/screenshots/lists.png" width="100" height="200" alt="Travels Lists Page">
-<img src="docs/screenshots/travel.png" width="100" height="200" alt="Travel Details Page">
+<div>
+   <img align="top" src="docs/screenshots/login.png" width="100" height="200" alt="Login Page">
+   <img align="top" src="docs/screenshots/home.png" width="100" height="200" alt="Home Page">
+   <img align="top" src="docs/screenshots/lists.png" width="100" height="200" alt="Travels Lists Page">
+   <img align="top" src="docs/screenshots/travel.png" width="100" height="200" alt="Travel Details Page">
+      
+</div>
 
 
 ## Variáveis de Ambiente
