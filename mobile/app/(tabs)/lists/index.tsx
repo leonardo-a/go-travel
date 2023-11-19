@@ -61,18 +61,14 @@ export default function Lists() {
           onRefresh={onRefresh}
           refreshing={refreshing}
         >
-          <ListItem
-            name="Nova Lista"
-            action="add"
-            onPress={() => router.push('/lists/new')}
-          />
+          <ListItem action="add" onPress={() => router.push('/lists/new')} />
           {lists.length > 0 &&
             status === 'done' &&
             lists.map((list, index) => {
               return (
                 <ListItem
                   key={`list-${index}`}
-                  name={list.name}
+                  list={list}
                   onPress={() => router.push(`/lists/${list.id}`)}
                 />
               )
