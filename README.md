@@ -1,5 +1,11 @@
 # GO Travel 🌍✈️
 
+<center>
+
+   ![logo](docs/assets/logo.png?width=100&height=200)
+
+</center>
+
 Crie listas com suas próximas viagens e convide seus amigos para compartilhar esses momentos! 🚀
 
 ## Sobre o App
@@ -11,6 +17,14 @@ O GO Travel é um aplicativo para aqueles que gostam de conhecer novos lugares e
 - **Crie Listas de Viagens:** Adicione os destinos dos seus sonhos e organize suas próximas viagens de forma simples.
   
 - **Adicione Amigos:** Transforme suas viagens em experiências compartilhadas! Adicione amigos à sua lista e planeje juntos os momentos incríveis que estão por vir.
+
+## Capturas de Tela
+
+<img src="docs/screenshots/login.png" width="100" height="200" alt="Login Page">
+<img src="docs/screenshots/home.png" width="100" height="200" alt="Home Page">
+<img src="docs/screenshots/lists.png" width="100" height="200" alt="Travels Lists Page">
+<img src="docs/screenshots/travel.png" width="100" height="200" alt="Travel Details Page">
+
 
 ## Variáveis de Ambiente
 
@@ -40,12 +54,13 @@ Para começar a testar o GO Travel, é preciso seguir os seguintes passos para a
    ```
 
 3. **Instale as dependências e inicie o Expo:**
+   <br/>
+   Após voltar para a raíz do repositório, execute os seguintes comandos
    ```bash
-   cd .. # voltar para raíz do repósitório
    cd mobile
    npm install
    npm start
    ```
 
 4. **Abra no emulador ou no Expo Go**
-   Quando surgir o QR Code no terminal, você pode rodar o aplicativo no emulador do Android ou do iOS ***(apenas para MacOS)***. Além disso, com seu dispositivo fisico com o **Expo GO** instalado, você pode ler o QR Code e executar direto do seu aparelo!
+   Quando surgir o QR Code no terminal, você pode rodar o aplicativo no emulador do Android ou do iOS ***(apenas para MacOS)***. Além disso, com seu dispositivo fisico com o **Expo GO** instalado, você pode ler o QR Code e executar direto do seu dispositivo!
