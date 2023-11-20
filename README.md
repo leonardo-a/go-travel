@@ -56,8 +56,6 @@ Para começar a testar o GO Travel, é preciso seguir os seguintes passos para a
    ```
 
 3. **Instale as dependências e inicie o Expo:**
-   <br/>
-   Após voltar para a raíz do repositório, execute os seguintes comandos
    ```bash
    cd mobile
    npm install
