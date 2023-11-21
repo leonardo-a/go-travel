@@ -64,3 +64,6 @@ Para começar a testar o GO Travel, é preciso seguir os seguintes passos para a
 
 4. **Abra no emulador ou no Expo Go**
    Quando surgir o QR Code no terminal, você pode rodar o aplicativo no emulador do Android ou do iOS ***(apenas para MacOS)***. Além disso, com seu dispositivo fisico com o **Expo GO** instalado, você pode ler o QR Code e executar direto do seu dispositivo!
+
+## Próximos passos
+- Atualmente, as imagens das viagens e das listas estão sendo salvas localmente, estou pesquisando alternativas para salvar essas imagens.
